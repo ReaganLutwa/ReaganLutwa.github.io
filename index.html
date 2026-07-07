@@ -323,7 +323,7 @@
             <div class="order-step hidden" id="step2">
                 <div class="step-nav">
                     <button class="back-btn" onclick="goToStep(1)">&larr; Back</button>
-                    <span class="step-indicator">Step 2 of 3</span>
+                    <span class="step-indicator">Step 2 of 4</span>
                 </div>
                 <h3>Tell Us About Your Song</h3>
                 <form id="songForm" action="https://formspree.io/f/xdavyapb" method="POST">
@@ -409,13 +409,61 @@
                 </form>
             </div>
 
-            <!-- Step 3: Confirmation -->
+            <!-- Step 3: Payment -->
             <div class="order-step hidden" id="step3">
+                <div class="step-nav">
+                    <button class="back-btn" onclick="goToStep(2)">&larr; Back</button>
+                    <span class="step-indicator">Step 3 of 3</span>
+                </div>
+                <h3>Complete Your Payment</h3>
+                <p style="text-align:center; color: var(--text-light); margin-bottom: 28px;">Your order total: <strong style="color: var(--primary); font-size: 1.5rem;" id="paymentAmount">$79</strong></p>
+
+                <div class="payment-methods">
+                    <div class="payment-card" onclick="selectPayment('paypal')">
+                        <div class="payment-radio"><input type="radio" name="payment" value="paypal" id="payPaypal" checked></div>
+                        <div class="payment-info">
+                            <strong>PayPal</strong>
+                            <p>Pay securely with your PayPal account or card. Click to pay: <a href="https://paypal.me/LutwamaReagan" target="_blank">paypal.me/LutwamaReagan</a></p>
+                        </div>
+                    </div>
+
+                    <div class="payment-card" onclick="selectPayment('mtn')">
+                        <div class="payment-radio"><input type="radio" name="payment" value="mtn" id="payMtn"></div>
+                        <div class="payment-info">
+                            <strong>MTN Mobile Money</strong>
+                            <p>Send to: <strong>0779982888</strong> (Lutwama Reagan Mitanda)</p>
+                            <p class="pay-hint">After sending, WhatsApp your screenshot to 0708813419</p>
+                        </div>
+                    </div>
+
+                    <div class="payment-card" onclick="selectPayment('airtel')">
+                        <div class="payment-radio"><input type="radio" name="payment" value="airtel" id="payAirtel"></div>
+                        <div class="payment-info">
+                            <strong>Airtel Money</strong>
+                            <p>Send to: <strong>0708813419</strong> (Lutwama Reagan Mitanda)</p>
+                            <p class="pay-hint">After sending, WhatsApp your screenshot to 0708813419</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment-whatsapp">
+                    <p>📱 Questions or sent payment? <a href="https://wa.me/256708813419" target="_blank">Message us on WhatsApp</a></p>
+                </div>
+
+                <button class="btn btn-primary btn-large" onclick="submitPayment()">
+                    I've Completed Payment
+                </button>
+                <p class="form-note">Click after you've sent the payment. We'll verify and start your song!</p>
+            </div>
+
+            <!-- Step 4: Confirmation -->
+            <div class="order-step hidden" id="step4">
                 <div class="confirmation-box">
                     <div class="confirmation-icon">&#10003;</div>
-                    <h3>Order Submitted!</h3>
-                    <p>We've received your song details. Check your email for payment instructions. Once payment is confirmed, we'll start crafting your song!</p>
+                    <h3>Payment Received!</h3>
+                    <p>We've received your order and payment. We'll start crafting your personalized song right away!</p>
                     <p class="confirmation-note">Delivery time: <span id="confirmDelivery">12 hours</span></p>
+                    <p style="color: var(--text-light); margin-bottom: 24px;">We'll send your song to your email. Any questions? <a href="https://wa.me/256708813419" target="_blank">WhatsApp us</a></p>
                     <a href="#" class="btn btn-secondary" onclick="resetOrder()">Create Another Song</a>
                 </div>
             </div>
@@ -454,7 +502,11 @@
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>We accept payment via PayPal, credit/debit card (via Stripe), and mobile money (MTN Mobile Money, Airtel Money for East African customers). Payment details are sent via email after you submit your order.</p>
+                        <p>We accept three payment methods:<br><br>
+                        <strong>1. PayPal:</strong> Send to <a href="https://paypal.me/LutwamaReagan" target="_blank">paypal.me/LutwamaReagan</a> (@LutwamaReagan)<br>
+                        <strong>2. MTN Mobile Money:</strong> Send to <strong>0779982888</strong> (Lutwama Reagan Mitanda)<br>
+                        <strong>3. Airtel Money:</strong> Send to <strong>0708813419</strong> (Lutwama Reagan Mitanda)<br><br>
+                        After sending mobile money, screenshot the confirmation and WhatsApp it to <strong>0708813419</strong>.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -527,8 +579,9 @@
                 <div class="footer-links">
                     <h4>Contact</h4>
                     <ul>
-                        <li><a href="mailto:hello@wimbowako.com">hello@wimbowako.com</a></li>
-                        <li><a href="https://wa.me/971XXXXXXXX">WhatsApp</a></li>
+                        <li><a href="mailto:ryglutwa0@gmail.com">ryglutwa0@gmail.com</a></li>
+                        <li><a href="https://wa.me/256708813419">WhatsApp: 0708813419</a></li>
+                        <li><a href="https://paypal.me/LutwamaReagan" target="_blank">PayPal: @LutwamaReagan</a></li>
                     </ul>
                 </div>
             </div>

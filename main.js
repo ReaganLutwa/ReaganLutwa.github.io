@@ -117,8 +117,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         document.getElementById('step' + step).classList.remove('hidden');
 
+        // Update payment amount display
+        if (step === 3) {
+            document.getElementById('paymentAmount').textContent = '$' + currentPrice;
+        }
+
         // Scroll to order section
         document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+    };
+
+    // Payment selection
+    window.selectPayment = function(method) {
+        document.querySelectorAll('input[name="payment"]').forEach(el => {
+            el.checked = (el.value === method);
+        });
+    };
+
+    // Submit payment and go to confirmation
+    window.submitPayment = function() {
+        goToStep(4);
+        document.getElementById('confirmDelivery').textContent = currentDelivery;
     };
 
     // Reset order
@@ -128,16 +146,19 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('songForm').reset();
     };
 
-    // Form submission
+    // Form submission - goes to payment step
     const songForm = document.getElementById('songForm');
     if (songForm) {
         songForm.addEventListener('submit', function(e) {
-            // Formspree handles the submission
-            // Show confirmation after brief delay (Formspree redirects)
-            setTimeout(() => {
-                goToStep(3);
-                document.getElementById('confirmDelivery').textContent = currentDelivery;
-            }, 500);
+            e.preventDefault();
+            // Submit to Formspree in background
+            fetch(songForm.action, {
+                method: 'POST',
+                body: new FormData(songForm),
+                headers: { 'Accept': 'application/json' }
+            }).catch(() => {});
+            // Go to payment step
+            goToStep(3);
         });
     }
 
