@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wimbo Wako — Your Personalized Song, Crafted with Love</title>
+    <meta name="description" content="Get a custom song made just for you or your loved one. Personalized lyrics, beautiful melody, delivered in 24 hours. Starting at just $49.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">&#9836;</span>
+                <span class="logo-text">Wimbo Wako</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#samples">Samples</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#order" class="nav-cta">Create My Song</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-badge">&#10084; Over 100 songs created for happy families</div>
+            <h1 class="hero-title">A Song Made Just<br><span class="accent">For You</span></h1>
+            <p class="hero-subtitle">Tell us your story. We'll craft a beautiful, personalized song with your name, your memories, and your heart woven into every verse. Delivered to your inbox in 24 hours.</p>
+            <div class="hero-cta">
+                <a href="#order" class="btn btn-primary">Create My Custom Song — $49</a>
+                <a href="#samples" class="btn btn-secondary">&#9658; Listen to a Sample</a>
+            </div>
+            <div class="hero-trust">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733; <span>4.9/5 from 50+ happy customers</span></div>
+                <div class="guarantee">&#10003; 30-Day Money-Back Guarantee</div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll to explore</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Simple Process</span>
+                <h2>How It Works</h2>
+                <p>Three easy steps to your personalized song</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">&#9998;</div>
+                    <h3>Tell Your Story</h3>
+                    <p>Fill out a simple form. Share the name of your loved one, the occasion, special memories, and the message you want the song to carry.</p>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">&#9836;</div>
+                    <h3>We Craft Your Song</h3>
+                    <p>Our team writes personalized lyrics and produces a beautiful song with vocals and melody. Every song is unique — made just for you.</p>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">&#9993;</div>
+                    <h3>Delivered to Your Inbox</h3>
+                    <p>Your custom song arrives as a high-quality MP3 file in 24 hours (or 1 hour with Express). Download, share, and treasure forever.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Occasions -->
+    <section class="section occasions" id="occasions">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Perfect For</span>
+                <h2>Every Special Moment</h2>
+            </div>
+            <div class="occasion-grid">
+                <div class="occasion-card">
+                    <div class="occasion-icon">&#10084;</div>
+                    <h4>For Your Partner</h4>
+                    <p>Anniversaries, birthdays, or just because</p>
+                </div>
+                <div class="occasion-card">
+                    <div class="occasion-icon">&#127881;</div>
+                    <h4>For Children</h4>
+                    <p>Birthdays, graduations, milestones</p>
+                </div>
+                <div class="occasion-card">
+                    <div class="occasion-icon">&#128144;</div>
+                    <h4>Weddings</h4>
+                    <p>First dance, proposal, vow renewal</p>
+                </div>
+                <div class="occasion-card">
+                    <div class="occasion-icon">&#128330;</div>
+                    <h4>For Prayer & Faith</h4>
+                    <p>Christian, Gospel, worship songs</p>
+                </div>
+                <div class="occasion-card">
+                    <div class="occasion-icon">&#127800;</div>
+                    <h4>In Memory</h4>
+                    <p>Honor a loved one who passed</p>
+                </div>
+                <div class="occasion-card">
+                    <div class="occasion-icon">&#127942;</div>
+                    <h4>Celebrations</h4>
+                    <p>Achievements, retirements, reunions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Samples -->
+    <section class="section samples" id="samples">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Hear the Magic</span>
+                <h2>Sample Songs</h2>
+                <p>These are examples of what your personalized song could sound like</p>
+            </div>
+            <div class="sample-cards">
+                <div class="sample-card">
+                    <div class="sample-play" data-sample="worship">
+                        <div class="play-btn">&#9658;</div>
+                    </div>
+                    <div class="sample-info">
+                        <h4>"Grace Upon Grace"</h4>
+                        <p class="sample-type">Gospel / Worship</p>
+                        <p class="sample-desc">A powerful worship song celebrating God's faithfulness through life's journey.</p>
+                    </div>
+                </div>
+                <div class="sample-card">
+                    <div class="sample-play" data-sample="love">
+                        <div class="play-btn">&#9658;</div>
+                    </div>
+                    <div class="sample-info">
+                        <h4>"My Heart, Your Home"</h4>
+                        <p class="sample-type">Love / Anniversary</p>
+                        <p class="sample-desc">A romantic ballad perfect for anniversaries or telling someone you love them.</p>
+                    </div>
+                </div>
+                <div class="sample-card">
+                    <div class="sample-play" data-sample="memorial">
+                        <div class="play-btn">&#9658;</div>
+                    </div>
+                    <div class="sample-info">
+                        <h4>"Forever in Our Hearts"</h4>
+                        <p class="sample-type">Memorial / Tribute</p>
+                        <p class="sample-desc">A gentle, healing tribute to honor the memory of a beloved family member.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sample-note">
+                <p>&#128161; <strong>Note:</strong> These are sample styles. Your song will be uniquely crafted with your name, your story, and your message. <a href="#order">Order yours today &rarr;</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Happy Customers</span>
+                <h2>What People Are Saying</h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">"I ordered a song for my wife on our anniversary. When she heard her name in the lyrics, she started crying. Best $49 I've ever spent!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JM</div>
+                        <div class="author-info">
+                            <strong>James M.</strong>
+                            <span>Kampala, Uganda</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">"The gospel song they made for my mother's birthday was beautiful. She plays it every morning during her prayer time. Thank you Wimbo Wako!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SN</div>
+                        <div class="author-info">
+                            <strong>Sarah N.</strong>
+                            <span>Nairobi, Kenya</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">"I needed a memorial song for my father. They captured his spirit perfectly. The whole family was moved to tears. God bless this work."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DK</div>
+                        <div class="author-info">
+                            <strong>David K.</strong>
+                            <span>Dubai, UAE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Simple Pricing</span>
+                <h2>Choose Your Package</h2>
+                <p>All packages include a fully personalized song with vocals</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Standard</h3>
+                        <div class="pricing-price">
+                            <span class="currency">$</span><span class="amount">49</span>
+                        </div>
+                        <p class="pricing-desc">Perfect for birthdays and celebrations</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>&#10003; Personalized lyrics with names</li>
+                        <li>&#10003; Full song with vocals (3-4 min)</li>
+                        <li>&#10003; High-quality MP3 file</li>
+                        <li>&#10003; <strong>24-hour delivery</strong></li>
+                        <li>&#10003; 1 free revision</li>
+                    </ul>
+                    <a href="#order" class="btn btn-outline" onclick="selectPackage('standard')">Select Standard</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Premium</h3>
+                        <div class="pricing-price">
+                            <span class="currency">$</span><span class="amount">79</span>
+                        </div>
+                        <p class="pricing-desc">The complete experience</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>&#10003; Everything in Standard</li>
+                        <li>&#10003; Longer song (4-5 minutes)</li>
+                        <li>&#10003; Lyrics sheet (PDF)</li>
+                        <li>&#10003; <strong>12-hour delivery</strong></li>
+                        <li>&#10003; 2 free revisions</li>
+                        <li>&#10003; Dedicated songwriter</li>
+                    </ul>
+                    <a href="#order" class="btn btn-primary" onclick="selectPackage('premium')">Select Premium</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Express</h3>
+                        <div class="pricing-price">
+                            <span class="currency">$</span><span class="amount">99</span>
+                        </div>
+                        <p class="pricing-desc">Need it urgently? No problem</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>&#10003; Everything in Premium</li>
+                        <li>&#10003; <strong>1-hour delivery</strong></li>
+                        <li>&#10003; Priority queue</li>
+                        <li>&#10003; Unlimited revisions</li>
+                        <li>&#10003; Custom genre request</li>
+                    </ul>
+                    <a href="#order" class="btn btn-outline" onclick="selectPackage('express')">Select Express</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section class="section order" id="order">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Get Started</span>
+                <h2>Create Your Custom Song</h2>
+                <p>Fill out the form below. We'll craft your song and deliver it within 24 hours.</p>
+            </div>
+
+            <!-- Step 1: Package Selection -->
+            <div class="order-step" id="step1">
+                <h3>Step 1: Choose Your Package</h3>
+                <div class="package-selector">
+                    <div class="package-option" data-package="standard" onclick="selectPackage('standard')">
+                        <div class="option-name">Standard</div>
+                        <div class="option-price">$49</div>
+                        <div class="option-delivery">24-hour delivery</div>
+                    </div>
+                    <div class="package-option selected" data-package="premium" onclick="selectPackage('premium')">
+                        <div class="option-badge">Popular</div>
+                        <div class="option-name">Premium</div>
+                        <div class="option-price">$79</div>
+                        <div class="option-delivery">12-hour delivery</div>
+                    </div>
+                    <div class="package-option" data-package="express" onclick="selectPackage('express')">
+                        <div class="option-name">Express</div>
+                        <div class="option-price">$99</div>
+                        <div class="option-delivery">1-hour delivery</div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="goToStep(2)">Continue &rarr;</button>
+            </div>
+
+            <!-- Step 2: Song Details -->
+            <div class="order-step hidden" id="step2">
+                <div class="step-nav">
+                    <button class="back-btn" onclick="goToStep(1)">&larr; Back</button>
+                    <span class="step-indicator">Step 2 of 3</span>
+                </div>
+                <h3>Tell Us About Your Song</h3>
+                <form id="songForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                    <input type="hidden" name="package" id="selectedPackage" value="premium">
+                    <input type="hidden" name="price" id="selectedPrice" value="79">
+
+                    <div class="form-group">
+                        <label for="songType">What type of song do you want? *</label>
+                        <select name="song_type" id="songType" required>
+                            <option value="">Select a category...</option>
+                            <option value="love">Love / Anniversary / Partner</option>
+                            <option value="gospel">Gospel / Worship / Prayer</option>
+                            <option value="birthday">Birthday Celebration</option>
+                            <option value="wedding">Wedding / Proposal</option>
+                            <option value="memorial">Memorial / Tribute</option>
+                            <option value="children">For Children / Family</option>
+                            <option value="other">Other (specify in details)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="recipientName">Who is this song for? *</label>
+                            <input type="text" name="recipient_name" id="recipientName" placeholder="e.g., Mama Sarah" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="senderName">Your name *</label>
+                            <input type="text" name="sender_name" id="senderName" placeholder="e.g., John" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="relationship">Relationship to recipient *</label>
+                        <select name="relationship" id="relationship" required>
+                            <option value="">Select...</option>
+                            <option value="partner">Husband / Wife / Partner</option>
+                            <option value="parent">Mother / Father</option>
+                            <option value="child">Son / Daughter</option>
+                            <option value="friend">Friend</option>
+                            <option value="sibling">Brother / Sister</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="occasion">Occasion *</label>
+                        <input type="text" name="occasion" id="occasion" placeholder="e.g., 50th Birthday, Anniversary, Just because..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="story">Tell us the story you want in the song *</label>
+                        <textarea name="story" id="story" rows="5" placeholder="Share memories, special moments, inside jokes, prayers, or anything you want included. The more details, the more personal the song!" required></textarea>
+                        <span class="form-hint">Tip: Include names, dates, places, and special memories</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="genre">Preferred style (optional)</label>
+                        <select name="genre" id="genre">
+                            <option value="">Let us choose (recommended)</option>
+                            <option value="gospel">Gospel / Worship</option>
+                            <option value="afrobeat">Afrobeat / Afro-fusion</option>
+                            <option value="ballad">Soft Ballad</option>
+                            <option value="acoustic">Acoustic / Folk</option>
+                            <option value="rnb">R&B / Soul</option>
+                            <option value="upbeat">Upbeat / celebratory</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Your email address *</label>
+                        <input type="email" name="email" id="email" placeholder="you@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp number (for updates)</label>
+                        <input type="tel" name="whatsapp" id="whatsapp" placeholder="+256 7XX XXX XXX">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large">
+                        Submit Order — <span id="submitPrice">$79</span>
+                    </button>
+                    <p class="form-note">You'll receive payment instructions via email after submitting.</p>
+                </form>
+            </div>
+
+            <!-- Step 3: Confirmation -->
+            <div class="order-step hidden" id="step3">
+                <div class="confirmation-box">
+                    <div class="confirmation-icon">&#10003;</div>
+                    <h3>Order Submitted!</h3>
+                    <p>We've received your song details. Check your email for payment instructions. Once payment is confirmed, we'll start crafting your song!</p>
+                    <p class="confirmation-note">Delivery time: <span id="confirmDelivery">12 hours</span></p>
+                    <a href="#" class="btn btn-secondary" onclick="resetOrder()">Create Another Song</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Got Questions?</span>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How long does it take to get my song?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Standard packages are delivered within 24 hours. Premium packages within 12 hours. Express packages within 1 hour. All times are from payment confirmation.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What if I don't like my song?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We offer free revisions! Standard includes 1 revision, Premium includes 2, and Express includes unlimited. If you're still not satisfied, we offer a 30-day money-back guarantee.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How do I pay?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We accept payment via PayPal, credit/debit card (via Stripe), and mobile money (MTN Mobile Money, Airtel Money for East African customers). Payment details are sent via email after you submit your order.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Can I use the song anywhere?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! Once delivered, the song is yours to keep, share, and play anywhere — social media, events, church, family gatherings. It's your personal gift.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What languages can you write songs in?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We primarily create songs in English and Swahili. We can also do Luganda and other East African languages. Let us know your preference in the order form!</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Is this really made by AI or real musicians?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We're transparent about our process: we use AI-assisted music production tools combined with human-crafted lyrics and quality review. This lets us offer beautiful, personalized songs at prices everyone can afford. The result is a unique song made just for you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Ready to Create Something Unforgettable?</h2>
+                <p>A personalized song is a gift they'll treasure forever. Starting at just $49.</p>
+                <a href="#order" class="btn btn-primary btn-large">Create My Custom Song Now</a>
+                <div class="cta-guarantee">
+                    <span>&#10003; 30-Day Money-Back Guarantee</span>
+                    <span>&#10003; Secure Payment</span>
+                    <span>&#10003; 24-Hour Delivery</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">&#9836;</span>
+                        <span class="logo-text">Wimbo Wako</span>
+                    </div>
+                    <p>Personalized songs crafted with love for your special moments. Based in East Africa, serving the world.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#samples">Sample Songs</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:hello@wimbowako.com">hello@wimbowako.com</a></li>
+                        <li><a href="https://wa.me/971XXXXXXXX">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Wimbo Wako. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="Instagram">&#128247;</a>
+                    <a href="#" aria-label="TikTok">&#9835;</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
