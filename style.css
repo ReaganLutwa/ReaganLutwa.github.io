@@ -543,8 +543,8 @@ img {
 
 .sample-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
     margin-bottom: 40px;
 }
 
@@ -1411,6 +1411,11 @@ input:focus, select:focus, textarea:focus {
         grid-template-columns: 1fr;
     }
 
+    .sample-cards .sample-card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
     .pricing-card.featured {
         transform: none;
         order: -1;
@@ -1443,9 +1448,12 @@ input:focus, select:focus, textarea:focus {
 
 @media (min-width: 769px) and (max-width: 1024px) {
     .occasion-grid,
-    .sample-cards,
     .testimonial-grid,
     .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sample-cards {
         grid-template-columns: repeat(2, 1fr);
     }
 
