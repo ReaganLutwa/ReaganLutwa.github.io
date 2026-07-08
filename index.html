@@ -249,71 +249,16 @@
 
             <!-- Country Toggle -->
             <div class="country-toggle">
-                <button class="country-btn active" id="btnUganda" onclick="showUganda()">
+                <button class="country-btn" id="btnUganda" onclick="showUganda()">
                     🇺🇬 Uganda
                 </button>
-                <button class="country-btn" id="btnWorld" onclick="showWorld()">
+                <button class="country-btn active" id="btnWorld" onclick="showWorld()">
                     🌍 Rest of World
                 </button>
             </div>
 
-            <!-- Uganda Pricing -->
-            <div class="pricing-grid" id="pricingUganda">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Standard</h3>
-                        <div class="pricing-price">
-                            <span class="currency">UGX</span><span class="amount">15,000</span>
-                        </div>
-                        <p class="pricing-desc">Perfect for birthdays and celebrations</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>&#10003; Personalized lyrics with names</li>
-                        <li>&#10003; Full song with vocals (3-4 min)</li>
-                        <li>&#10003; High-quality MP3 file</li>
-                        <li>&#10003; <strong>48-hour delivery</strong></li>
-                        <li>&#10003; 1 free revision</li>
-                    </ul>
-                    <a href="#order" class="btn btn-outline" onclick="selectPackage('standard-ugx')">Select Standard</a>
-                </div>
-                <div class="pricing-card featured">
-                    <div class="pricing-badge">Most Popular</div>
-                    <div class="pricing-header">
-                        <h3>Premium</h3>
-                        <div class="pricing-price">
-                            <span class="currency">UGX</span><span class="amount">25,000</span>
-                        </div>
-                        <p class="pricing-desc">The complete experience</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>&#10003; Everything in Standard</li>
-                        <li>&#10003; Longer song (4-5 minutes)</li>
-                        <li>&#10003; Lyrics sheet (PDF)</li>
-                        <li>&#10003; <strong>24-hour delivery</strong></li>
-                        <li>&#10003; 2 free revisions</li>
-                    </ul>
-                    <a href="#order" class="btn btn-primary" onclick="selectPackage('premium-ugx')">Select Premium</a>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Express</h3>
-                        <div class="pricing-price">
-                            <span class="currency">UGX</span><span class="amount">35,000</span>
-                        </div>
-                        <p class="pricing-desc">Need it urgently? No problem</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>&#10003; Everything in Premium</li>
-                        <li>&#10003; <strong>6-hour delivery</strong></li>
-                        <li>&#10003; Priority queue</li>
-                        <li>&#10003; Unlimited revisions</li>
-                    </ul>
-                    <a href="#order" class="btn btn-outline" onclick="selectPackage('express-ugx')">Select Express</a>
-                </div>
-            </div>
-
-            <!-- World Pricing (hidden by default) -->
-            <div class="pricing-grid hidden" id="pricingWorld">
+            <!-- World Pricing (default - shown first) -->
+            <div class="pricing-grid" id="pricingWorld">
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <h3>Standard</h3>
@@ -369,9 +314,63 @@
                 </div>
             </div>
 
-            <div class="pricing-note-uganda">
+            <!-- Uganda Pricing (hidden until tapped) -->
+            <div class="pricing-grid hidden" id="pricingUganda">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Standard</h3>
+                        <div class="pricing-price">
+                            <span class="currency">UGX</span><span class="amount">37,000</span>
+                        </div>
+                        <p class="pricing-desc">Perfect for birthdays and celebrations</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>&#10003; Personalized lyrics with names</li>
+                        <li>&#10003; Full song with vocals (3-4 min)</li>
+                        <li>&#10003; High-quality MP3 file</li>
+                        <li>&#10003; <strong>48-hour delivery</strong></li>
+                        <li>&#10003; 1 free revision</li>
+                    </ul>
+                    <a href="#order" class="btn btn-outline" onclick="selectPackage('standard-ugx')">Select Standard</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Premium</h3>
+                        <div class="pricing-price">
+                            <span class="currency">UGX</span><span class="amount">55,000</span>
+                        </div>
+                        <p class="pricing-desc">The complete experience</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>&#10003; Everything in Standard</li>
+                        <li>&#10003; Longer song (4-5 minutes)</li>
+                        <li>&#10003; Lyrics sheet (PDF)</li>
+                        <li>&#10003; <strong>24-hour delivery</strong></li>
+                        <li>&#10003; 2 free revisions</li>
+                    </ul>
+                    <a href="#order" class="btn btn-primary" onclick="selectPackage('premium-ugx')">Select Premium</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Express</h3>
+                        <div class="pricing-price">
+                            <span class="currency">UGX</span><span class="amount">74,000</span>
+                        </div>
+                        <p class="pricing-desc">Need it urgently? No problem</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>&#10003; Everything in Premium</li>
+                        <li>&#10003; <strong>6-hour delivery</strong></li>
+                        <li>&#10003; Priority queue</li>
+                        <li>&#10003; Unlimited revisions</li>
+                    </ul>
+                    <a href="#order" class="btn btn-outline" onclick="selectPackage('express-ugx')">Select Express</a>
+                </div>
+            </div>
+
+            <div class="pricing-note-uganda hidden" id="ugandaNote">
                 <p>🇺🇬 <strong>Ugandan customers:</strong> Pay via <strong>MTN Mobile Money (0779982888)</strong> or <strong>Airtel Money (0708813419)</strong>. WhatsApp your payment screenshot to <strong>0708813419</strong>.</p>
-                <p>🌍 <strong>International customers:</strong> Pay via <a href="https://paypal.me/LutwamaReagan" target="_blank">PayPal (@LutwamaReagan)</a></p>
             </div>
         </div>
     </section>
