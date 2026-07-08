@@ -320,5 +320,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // ============================================
+    // COUNTRY PRICING TOGGLE
+    // ============================================
+    window.showUganda = function() {
+        document.getElementById('pricingUganda').classList.remove('hidden');
+        document.getElementById('pricingWorld').classList.add('hidden');
+        document.getElementById('btnUganda').classList.add('active');
+        document.getElementById('btnWorld').classList.remove('active');
+    };
+
+    window.showWorld = function() {
+        document.getElementById('pricingWorld').classList.remove('hidden');
+        document.getElementById('pricingUganda').classList.add('hidden');
+        document.getElementById('btnWorld').classList.add('active');
+        document.getElementById('btnUganda').classList.remove('active');
+    };
+
     console.log('🎵 Wimbo Wako loaded successfully!');
 });

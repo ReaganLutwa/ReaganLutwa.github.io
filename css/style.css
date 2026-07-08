@@ -1262,6 +1262,68 @@ input:focus, select:focus, textarea:focus {
     font-size: 0.95rem;
 }
 
+/* ============================================
+   COUNTRY TOGGLE
+   ============================================ */
+.country-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.country-btn {
+    padding: 12px 28px;
+    border: 2px solid var(--border);
+    border-radius: 50px;
+    background: var(--bg-card);
+    color: var(--text-body);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: 'Inter', sans-serif;
+}
+
+.country-btn:hover {
+    border-color: var(--primary-light);
+}
+
+.country-btn.active {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    border-color: var(--primary);
+    box-shadow: 0 4px 16px rgba(196, 114, 60, 0.3);
+}
+
+.pricing-note-uganda {
+    background: rgba(91, 140, 90, 0.06);
+    border-left: 4px solid var(--success);
+    padding: 20px 24px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin-top: 32px;
+    text-align: center;
+}
+
+.pricing-note-uganda p {
+    color: var(--text-body);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.pricing-note-uganda p:last-child {
+    margin-bottom: 0;
+}
+
+.pricing-note-uganda a {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.pricing-note-uganda strong {
+    color: var(--text-dark);
+}
+
 .payment-whatsapp a {
     color: var(--success);
     font-weight: 600;
