@@ -1545,21 +1545,57 @@ input:focus, select:focus, textarea:focus {
     }
 
     .hero {
-        padding: 100px 20px 60px;
+        min-height: auto;
+        justify-content: flex-start;
+        padding: 112px 20px 72px;
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: clamp(2.1rem, 11vw, 2.6rem);
+        margin-bottom: 18px;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        line-height: 1.65;
+        margin-bottom: 28px;
     }
 
     .hero-cta {
         flex-direction: column;
         align-items: center;
+        margin-bottom: 28px;
+    }
+
+    .hero-scroll {
+        display: none;
     }
 
     .btn {
         width: 100%;
         max-width: 320px;
+    }
+
+    .whatsapp-float {
+        right: 12px;
+        bottom: calc(12px + env(safe-area-inset-bottom));
+        min-width: 0;
+        padding: 10px 14px;
+        border-radius: 999px;
+        flex-direction: row;
+        gap: 6px;
+    }
+
+    .whatsapp-float span {
+        display: none;
+    }
+
+    .whatsapp-float strong {
+        font-size: 0.85rem;
+    }
+
+    .footer {
+        padding-bottom: 92px;
     }
 
     .section {
