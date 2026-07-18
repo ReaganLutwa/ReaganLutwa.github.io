@@ -77,37 +77,109 @@ document.addEventListener('DOMContentLoaded', function() {
     // ORDER FORM - MULTI-STEP
     // ============================================
     let currentPackage = 'premium';
-    let currentPrice = 79;
-    let currentDelivery = '12 hours';
+    let currentCurrency = 'USD';
+    let currentPrice = 69;
+    let currentDelivery = '24 hours';
+    let currentOrderRef = '';
 
     // Package data
     const packages = {
-        standard: { price: 49, delivery: '24 hours' },
-        premium: { price: 79, delivery: '12 hours' },
-        express: { price: 75, delivery: '1 hour' }
+        standard: { currency: 'USD', price: 39, delivery: '48 hours' },
+        premium: { currency: 'USD', price: 69, delivery: '24 hours' },
+        express: { currency: 'USD', price: 99, delivery: '12 hours' },
+        'standard-ugx': { currency: 'UGX', price: 37000, delivery: '48 hours' },
+        'premium-ugx': { currency: 'UGX', price: 65000, delivery: '24 hours' },
+        'express-ugx': { currency: 'UGX', price: 95000, delivery: '12 hours' }
     };
+
+    function basePackage(pkg) {
+        return pkg.replace('-ugx', '');
+    }
+
+    function formatMoney(currency, amount) {
+        if (currency === 'UGX') {
+            return 'UGX ' + Number(amount).toLocaleString('en-US');
+        }
+        return '$' + amount;
+    }
+
+    function ensureOrderRef() {
+        if (!currentOrderRef) {
+            currentOrderRef = 'WW-' + Date.now().toString(36).toUpperCase();
+            const refInput = document.getElementById('orderRef');
+            if (refInput) refInput.value = currentOrderRef;
+        }
+        const refDisplay = document.getElementById('orderRefDisplay');
+        if (refDisplay) refDisplay.textContent = currentOrderRef;
+        return currentOrderRef;
+    }
+
+    function updatePaymentUI() {
+        const money = formatMoney(currentCurrency, currentPrice);
+        const submitPrice = document.getElementById('submitPrice');
+        if (submitPrice) submitPrice.textContent = money;
+
+        const paymentAmount = document.getElementById('paymentAmount');
+        if (paymentAmount) paymentAmount.textContent = money;
+
+        const paypalLink = document.getElementById('paypalLink');
+        if (paypalLink) {
+            paypalLink.href = currentCurrency === 'USD'
+                ? 'https://paypal.me/LutwamaReagan/' + currentPrice
+                : 'https://paypal.me/LutwamaReagan';
+        }
+
+        const waConfirmLink = document.getElementById('waConfirmLink');
+        if (waConfirmLink) {
+            const message = currentOrderRef
+                ? `Hello Wimbo Wako, I have sent payment for ${currentOrderRef}. Package: ${currentPackage}. Amount: ${money}. I am sending the screenshot now.`
+                : 'Hello Wimbo Wako, I need help completing payment for a custom song.';
+            waConfirmLink.href = 'https://wa.me/256708813419?text=' + encodeURIComponent(message);
+        }
+    }
+
+    function syncPackageOptionPrices(region) {
+        ['standard', 'premium', 'express'].forEach(base => {
+            const key = region === 'ugx' ? base + '-ugx' : base;
+            const data = packages[key];
+            const option = document.querySelector(`.package-option[data-package="${base}"]`);
+            if (!data || !option) return;
+            const priceEl = option.querySelector('.option-price');
+            const deliveryEl = option.querySelector('.option-delivery');
+            if (priceEl) priceEl.textContent = formatMoney(data.currency, data.price);
+            if (deliveryEl) deliveryEl.textContent = data.delivery.replace(' hours', '-hour').replace(' hour', '-hour') + ' delivery';
+        });
+    }
 
     // Select package
     window.selectPackage = function(pkg) {
-        currentPackage = pkg;
-        currentPrice = packages[pkg].price;
-        currentDelivery = packages[pkg].delivery;
+        const data = packages[pkg];
+        if (!data) return;
 
-        // Update UI
+        currentPackage = pkg;
+        currentCurrency = data.currency;
+        currentPrice = data.price;
+        currentDelivery = data.delivery;
+
+        // Keep the visible order-form package cards in the same currency as the selected pricing table.
+        syncPackageOptionPrices(pkg.indexOf('-ugx') !== -1 ? 'ugx' : 'usd');
+
+        // Update UI: Uganda pricing buttons map to the same 3 package cards in the order form.
         document.querySelectorAll('.package-option').forEach(el => {
             el.classList.remove('selected');
         });
-        document.querySelector(`.package-option[data-package="${pkg}"]`).classList.add('selected');
+        const option = document.querySelector(`.package-option[data-package="${basePackage(pkg)}"]`);
+        if (option) option.classList.add('selected');
 
         // Update hidden form fields
         const pkgInput = document.getElementById('selectedPackage');
         const priceInput = document.getElementById('selectedPrice');
+        const currencyInput = document.getElementById('selectedCurrency');
         if (pkgInput) pkgInput.value = pkg;
         if (priceInput) priceInput.value = currentPrice;
+        if (currencyInput) currencyInput.value = currentCurrency;
 
-        // Update submit button
-        const submitPrice = document.getElementById('submitPrice');
-        if (submitPrice) submitPrice.textContent = '$' + currentPrice;
+        updatePaymentUI();
     };
 
     // Navigate between steps
@@ -117,9 +189,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         document.getElementById('step' + step).classList.remove('hidden');
 
-        // Update payment amount display
+        // Update payment amount, reference and WhatsApp confirmation link
         if (step === 3) {
-            document.getElementById('paymentAmount').textContent = '$' + currentPrice;
+            ensureOrderRef();
+            updatePaymentUI();
         }
 
         // Scroll to order section
@@ -133,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
-    // Submit payment and go to confirmation
+    // Keep confirmation step accurate if it is shown
     window.submitPayment = function() {
         goToStep(4);
         document.getElementById('confirmDelivery').textContent = currentDelivery;
@@ -141,6 +214,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Reset order
     window.resetOrder = function() {
+        currentOrderRef = '';
+        const refInput = document.getElementById('orderRef');
+        if (refInput) refInput.value = '';
+        const refDisplay = document.getElementById('orderRefDisplay');
+        if (refDisplay) refDisplay.textContent = 'WW-NEW';
         selectPackage('premium');
         goToStep(1);
         document.getElementById('songForm').reset();
@@ -151,13 +229,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (songForm) {
         songForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            // Submit to Formspree in background
+            ensureOrderRef();
+            updatePaymentUI();
+            // Submit to Formspree in background, then show payment instructions.
             fetch(songForm.action, {
                 method: 'POST',
                 body: new FormData(songForm),
                 headers: { 'Accept': 'application/json' }
             }).catch(() => {});
-            // Go to payment step
             goToStep(3);
         });
     }
@@ -339,6 +418,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('btnWorld').classList.add('active');
         document.getElementById('btnUganda').classList.remove('active');
     };
+
+    // Keep hidden order fields in sync with the default selected package.
+    selectPackage('premium');
 
     console.log('🎵 Wimbo Wako loaded successfully!');
 });

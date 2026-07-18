@@ -1468,6 +1468,40 @@ input:focus, select:focus, textarea:focus {
     display: none !important;
 }
 
+/* Sticky WhatsApp conversion button */
+.whatsapp-float {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 86px;
+    padding: 12px 14px;
+    border-radius: 18px;
+    background: #25D366;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.35);
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.whatsapp-float span {
+    font-size: 0.72rem;
+    opacity: 0.95;
+}
+
+.whatsapp-float strong {
+    font-size: 1rem;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-2px);
+}
+
 /* Scroll reveal */
 .reveal {
     opacity: 0;
